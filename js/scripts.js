@@ -2,6 +2,7 @@ var Cell = {
     initialize: function(cellId) {
         this.cellId = cellId;
         this.state = false;
+        this.futureState = false;
 
     },
 
@@ -58,8 +59,8 @@ var Cell = {
         } else {
           this.futureState = this.state;
         }
+        return this.futureState;
     },
-
 
     setState: function() {
         this.state = !this.state
@@ -94,28 +95,35 @@ $(document).ready(function() {
 
     });
 
-    $("#start").click(function() {
+    $("button#start").click(function() {
         var interval = setInterval(function() {
             World.population.forEach(function(cell) {
                 cell.setFutureState();
             });
 
             World.population.forEach(function(cell) {
-
                 if (cell.futureState === true) {
                     $("td#"+cell.cellId).attr('class', 'alive')
-                    cell.state = true;
+                    cell.state = true
                     this.timeAliveCount += 1
                 } else if (cell.futureState === false) {
                     $("td#"+cell.cellId).attr('class', 'dead')
-                    cell.state = false;
+                    cell.state = false
                 }
            });
 
         }, 100);
 
-        $("#stop").click(function() {
+        $("button#pause").click(function() {
             clearInterval(interval);
+        });
+
+        $("button#game-over").click(function() {
+            clearInterval(interval);
+            World.population = [];
+            $("td").attr('class', 'dead')
+            World.populate(40);
+
         });
     });
 

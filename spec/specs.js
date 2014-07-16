@@ -9,7 +9,6 @@ describe('Cell', function() {
             testCell.initialize(1);
             testCell.cellId.should.equal(1);
             testCell.state.should.equal(false);
-            testCell.futureState.should.equal(false);
         });
     });
     describe('create', function() {
