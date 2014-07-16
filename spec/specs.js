@@ -72,14 +72,11 @@ describe('Cell', function() {
 
         })
     })
-    describe('updateState', function() {
-        it('updates the state to the future state', function () {
-            World.populate(10);
-            var testCell = World.population[49];
-            World.population[39].state = true;
-            World.population[50].state = true;
-            World.population[48].state = true;
-            testCell.updateState();
+
+    describe('setState', function() {
+        it('will change the state of a cell', function() {
+            var testCell = Cell.create(4,10)
+            testCell.setState();
             testCell.state.should.equal(true)
         })
     })

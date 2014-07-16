@@ -1,8 +1,8 @@
 var Cell = {
     initialize: function(cellId) {
-        this.cellId = cellId
+        this.cellId = cellId;
         this.state = false;
-        this.futureState = false;
+
     },
 
     create: function(cellId, dimension) {
@@ -58,13 +58,11 @@ var Cell = {
         } else {
           this.futureState = this.state;
         }
-        return this.futureState
     },
 
-    updateState: function() {
-        this.setFutureState();
-        this.state = this.futureState;
-        this.futureState = false
+
+    setState: function() {
+        this.state = !this.state
     }
 
 };
@@ -78,4 +76,52 @@ var World = {
    }
 
 };
+
+$(document).ready(function() {
+    World.populate(40);
+
+    for (var i=0; i < 40; i++) {
+        $("table#universe").append("<tr></tr>")
+        for(var j=0; j < 40; j++ ) {
+            $("tr").last().append("<td id ='" + ((i*40)+j) + "' class = 'dead'></td>")
+        }
+    }
+
+    $('table#universe td').click(function() {
+        var cellId = $(this).attr("id");
+        World.population[cellId].setState();
+        $(this).attr('class', 'alive');
+
+    });
+
+    $("#start").click(function() {
+        var interval = setInterval(function() {
+            World.population.forEach(function(cell) {
+                cell.setFutureState();
+            });
+
+            World.population.forEach(function(cell) {
+
+                if (cell.futureState === true) {
+                    $("td#"+cell.cellId).attr('class', 'alive')
+                    cell.state = true;
+                    this.timeAliveCount += 1
+                } else if (cell.futureState === false) {
+                    $("td#"+cell.cellId).attr('class', 'dead')
+                    cell.state = false;
+                }
+           });
+
+        }, 100);
+
+        $("#stop").click(function() {
+            clearInterval(interval);
+        });
+    });
+
+
+
+
+})
+
 

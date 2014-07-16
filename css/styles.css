@@ -1,3 +1,27 @@
 h1 {
-    margin-bottom: 50px;
+    margin-bottom: 25px;
+}
+
+table {
+    border: 1px solid black;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+td {
+  height: 15px;
+  width: 15px;
+  border: 1px solid black;
+}
+
+
+.alive{
+    background-color: #00FF00;
+
+}
+
+
+.dead {
+    background-color: #5F04B4;
+
 }
