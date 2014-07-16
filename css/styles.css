@@ -13,7 +13,37 @@ td {
   width: 15px;
   border: 1px solid black;
 }
+.One {
+    background-color: #FF0000;
 
+}
+.Two {
+    background-color: #FF7F00;
+}
+.Three {
+    background-color: #FFFF00;
+}
+.Four {
+    background-color: #00FF00;
+}
+.Five {
+    background-color: #0000FF;
+}
+.Six {
+    background-color: #4B0082;
+}
+.Seven {
+    background-color: #8F00FF;
+}
+.Eight {
+    background-color: #FF00FF
+}
+.Nine {
+    background-color: #FF1493
+}
+.Ten {
+    background-color: #8B0000;
+}
 
 .alive{
     background-color: #00FF00;
@@ -22,6 +52,6 @@ td {
 
 
 .dead {
-    background-color: #5F04B4;
+    background-color: #F0F8FF;
 
 }

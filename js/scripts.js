@@ -80,11 +80,12 @@ var World = {
 
 $(document).ready(function() {
     World.populate(40);
+    var timeAlive = 0
 
     for (var i=0; i < 40; i++) {
         $("table#universe").append("<tr></tr>")
         for(var j=0; j < 40; j++ ) {
-            $("tr").last().append("<td id ='" + ((i*40)+j) + "' class = 'dead'></td>")
+            $("tr").last().append("<td id ='" + ((i*40)+j) + "' class = 'dead' ></td>")
         }
     }
 
@@ -103,16 +104,24 @@ $(document).ready(function() {
 
             World.population.forEach(function(cell) {
                 if (cell.futureState === true) {
-                    $("td#"+cell.cellId).attr('class', 'alive')
+                    var numbers = ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine']
+                    if (timeAlive < 9) {
+                        var number =  numbers[timeAlive]
+                        timeAlive += 1
+                    } else {
+                        var number = 'Ten'
+                        timeAlive = 0
+                    }
+
+                    $("td#"+cell.cellId).attr('class', '').addClass(number)
                     cell.state = true
-                    this.timeAliveCount += 1
                 } else if (cell.futureState === false) {
                     $("td#"+cell.cellId).attr('class', 'dead')
                     cell.state = false
                 }
            });
 
-        }, 100);
+        }, 200);
 
         $("button#pause").click(function() {
             clearInterval(interval);
