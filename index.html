@@ -17,6 +17,15 @@
                 <button id="start" class="btn">Start</button><br><br>
                 <button id="pause" class="btn">Pause</button><br><br>
                 <button id="game-over" class="btn">New Game</button>
+                <div class="direction">
+                    <h2>Directions:</h2>
+                    <p>Click on any cell to make it live. Press the 'Start' button. Cells that are alive will be colored. At any point, you may press the 'Pause' button. To start a new game press the 'New Game' button. At any point during the game you may click on a cell to make it live.</p>
+                </div>
+                <h2> The Rules: </h2>
+                <p> Any live cell with less than two live neighbours dies. Mimicks underpopulation.</p>
+                <p> Any live cell with two or three live neighbours lives to the next generation.</p>
+                <p> Any live cell with more than three live neighbours dies. Mimicks overcrowding.</p>
+                <p> Any dead cell with exactly three live neighbours becomes alive. Mimicks birth.</p>
             </div>
             <div class='col-md-7'>
                 <table id="universe"></table>
